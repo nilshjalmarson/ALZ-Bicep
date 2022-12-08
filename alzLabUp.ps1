@@ -102,3 +102,17 @@ New-AzResourceGroup `
   -Location $location
 
 New-AzResourceGroupDeployment @inputObject
+
+# Policy
+Write-Output "POLICY ASSIGNMENT"
+
+$inputObject = @{
+  DeploymentName        = 'alz-alzPolicyAssignmentDefaultsDeployment-{0}' -f (-join (Get-Date -Format 'yyyyMMddTHHMMssffffZ')[0..63])
+  Location              = 'eastus'
+  ManagementGroupId     = 'alz'
+  TemplateFile          = "infra-as-code/bicep/modules/policy/assignments/alzDefaults/alzDefaultPolicyAssignments.bicep"
+  TemplateParameterFile = 'infra-as-code/bicep/modules/policy/assignments/alzDefaults/parameters/alzDefaultPolicyAssignments.parameters.all.json'
+  parLogAnalyticsWorkspaceResourceId = $loggingOutput.Outputs['outLogAnalyticsWorkspaceId'].Value
+}
+
+New-AzManagementGroupDeployment @inputObject

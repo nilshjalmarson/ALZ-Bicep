@@ -6,25 +6,19 @@
       "value": "alz"
     },
     "parLogAnalyticsWorkSpaceAndAutomationAccountLocation": {
-      "value": "eastus"
-    },
-    "parLogAnalyticsWorkspaceResourceId": {
-      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-logging/providers/Microsoft.OperationalInsights/workspaces/alz-log-analytics"
+      "value": "westeurope"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
-      "value": "365"
+      "value": "180"
     },
     "parAutomationAccountName": {
       "value": "alz-automation-account"
     },
     "parMsDefenderForCloudEmailSecurityContact": {
-      "value": "security_contact@replace_me.com"
-    },
-    "parDdosProtectionPlanId": {
-      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-hub-networking-001/providers/Microsoft.Network/ddosProtectionPlans/alz-ddos-plan"
+      "value": "nils.hjalmarsson@forefront.se"
     },
     "parPrivateDnsResourceGroupId": {
-      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-hub-networking-001"
+      "value": "/subscriptions/6e8c64f1-51d4-4010-aac6-bdd891e66b1b/resourceGroups/rg-alz-hub-networking-001"
     },
     "parTelemetryOptOut": {
       "value": false
