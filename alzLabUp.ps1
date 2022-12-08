@@ -75,3 +75,30 @@ New-AzManagementGroupDeployment `
   -Location $location `
   -parLogAnalyticsWorkspaceResourceId $loggingOutput.Outputs['outLogAnalyticsWorkspaceId'].Value `
   -ManagementGroupId alz
+
+
+# Network Hub
+# Set Platform connectivity subscription ID as the the current subscription
+$ConnectivitySubscriptionId = "6e8c64f1-51d4-4010-aac6-bdd891e66b1b"
+
+Select-AzSubscription -SubscriptionId $ConnectivitySubscriptionId
+
+# Set Platform management subscription ID as the the current subscription
+$ManagementSubscriptionId = "6e8c64f1-51d4-4010-aac6-bdd891e66b1b"
+
+# Set the top level MG Prefix in accordance to your environment. This example assumes default 'alz'.
+$TopLevelMGPrefix = "alz"
+
+# Parameters necessary for deployment
+$inputObject = @{
+  DeploymentName        = 'alz-HubNetworkingDeploy-{0}' -f (-join (Get-Date -Format 'yyyyMMddTHHMMssffffZ')[0..63])
+  ResourceGroupName     = "rg-$TopLevelMGPrefix-hub-networking-001"
+  TemplateFile          = "infra-as-code/bicep/modules/hubNetworking/hubNetworking.bicep"
+  TemplateParameterFile = "infra-as-code/bicep/modules/hubNetworking/parameters/hubNetworking.parameters.all.json"
+}
+
+New-AzResourceGroup `
+  -Name $inputObject.ResourceGroupName `
+  -Location $location
+
+New-AzResourceGroupDeployment @inputObject

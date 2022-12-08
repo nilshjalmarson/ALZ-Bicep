@@ -5,6 +5,9 @@ Select-AzSubscription $sub
 
 # Management groups
 
-$location = 'westeurope'
+# $location = 'westeurope'
 
 Remove-AzManagementGroup -GroupId 'alz-decommissioned'
+
+Remove-AzResourceGroup -Force -Name 'rg-alz-logging-001'
+Remove-AzResourceGroup -Force -Name 'rg-alz-hub-networking-001'
